@@ -220,7 +220,7 @@ After cloning the repository and making the program file executable as instructe
 Run the following command inside nexusnodes directory:
 
 ```bash
-    ./nexusnodes.sh
+    ./setup.sh
 ```
 
 <br>
