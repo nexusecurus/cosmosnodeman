@@ -150,7 +150,7 @@ The program was tested even in a Ubuntu Server Minimized setup, to ensure that i
 Clone this repository to your machine using the following commands:
 
 ```bash
-    git clone https://github.com/nexusecurus/cosmosnodeautoinstaller.git
+    git clone https://github.com/nexusecurus/cosmosnodsman.git
 ```
 
 
@@ -161,7 +161,7 @@ Clone this repository to your machine using the following commands:
 For the script to be executed, you must add execution permission to the file:
 
 ```bash
-    chmod +x nexusnodes.sh
+    chmod +x setup.sh
 ```
 
 
