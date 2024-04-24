@@ -298,7 +298,7 @@ Extracting snapshot to $DAEMON_HOME/$CHAIN_DIR
 
     elif [[ $snap_file == *.lz4 ]]; then
 
-        lz4 -c -d $snap_file | tar -x -C $DAEMON_HOME/$CHAIN_DIR
+        lz4 -c -d $snap_file | tar -xv -C $DAEMON_HOME/$CHAIN_DIR
 
     else
 
@@ -465,6 +465,7 @@ dependencies_install() {
             telnet \
             ufw \
             xclip \
+            bc \
             qrencode \
 
         # Check if installation was successful
@@ -726,7 +727,7 @@ monitor_menu() {
     "2" "Stop Node"  \
     "3" "View Node General Info  "$mon"" \
     "4" "Prune Node (ADVANCED)"\
-    "5" "Remove Node" \
+    "5" "Remove Node (CAREFUL)" \
     "0" "Return to Main Menu" \
     3>&1 1>&2 2>&3)
 
@@ -1733,6 +1734,7 @@ Please enter amount to send (Fees are in AUTO MODE, please left some spare for f
         read -r amount_to_send
 
         if [[ $amount_to_send =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            uamount_to_send=$(bc <<< "scale=4; $amount_to_send * 1000000")
             break
         else
             colored_text "31" "
@@ -1775,8 +1777,9 @@ Please enter your >( $USER )< system password to unlock your >( $WALLET_NAME )< 
 
 
 "
-    $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $amount_to_send$TICKER --gas auto --gas-adjustment 1.5
-
+#  $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $amount_to_send$DENOM --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM
+    $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $uamount_to_send$DENOM --from $WALLET_NAME --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM
+    
     if [ $? -ne 0 ]; then
         colored_text "31;1" "
 
@@ -2007,7 +2010,7 @@ fi
     --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
     --title "Wallet Menu" \
     --cancel-label "Back" \
-    --menu "\nSelected Wallet: $WALLET_NAME\n\nCurrent Balance: $actual_balance $TICKER\n" 15 70 7 \
+    --menu "\nSelected Wallet: $WALLET_NAME\n\nCurrent Balance: $actual_balance $TICKER\n" 20 70 7 \
     "1" "Create or Import Wallet" \
     "2" "View Wallet Info" \
     "3" "Send Funds" \
