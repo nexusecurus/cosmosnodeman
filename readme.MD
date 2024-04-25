@@ -43,7 +43,7 @@
 
 ## <p align="center" > IMPORTANT NOTE </p>
 
-All functions included in this script came from de chain daemon/binary, the most important one to point is WALLET SEED GENERATION, which is created using the embedded functionality within the chain app. In any situation, the seed is shared or compromised by us.
+All functions included in this script came from chain daemon/binary, the most important one to point is WALLET SEED GENERATION, which is created using the embedded functionality within the chain app. In any situation, the seed is shared or compromised by us.
 
 Feel free to audit the code.
 
@@ -111,6 +111,7 @@ The program was tested even in a Ubuntu Server Minimized setup, to ensure that i
   - [Additional information / Documentation **(MUST READ!!!)**](#additional-information--documentation-must-read)
   - [Usage](#usage)
   - [KNOWN Issues \& Bugs:](#known-issues--bugs)
+  - [Screenshots](#screenshots)
   - [ About the Author ](#-about-the-author-)
   - [ Contribute To Our Effort ](#-contribute-to-our-effort-)
 
@@ -254,6 +255,29 @@ There are some random exits from the program from time to time. Outside that, it
 ---
 
 <br>
+
+## Screenshots
+
+<div style="display: flex; justify-content: center;">
+    <img src="images/screenshot-1.jpeg" alt="Screenshot 1 style="margin-right: 50px;" width="800" height="auto">
+    <img src="images/screenshot-2.jpeg" alt="Screenshot 2" width="800" height="auto">
+</div>
+<br>
+<div style="display: flex; justify-content: center;">
+    <img src="images/screenshot-3.jpeg" alt="Screenshot 3 style="margin-right: 50px;" width="800" height="auto">
+    <img src="images/screenshot-4.jpeg" alt="Screenshot 4" width="800" height="auto">
+</div>
+<br>
+<div style="display: flex; justify-content: center;">
+    <img src="images/screenshot-5.jpeg" alt="Screenshot 5 style="margin-right: 50px;" width="800" height="auto">
+    <img src="images/screenshot-6.jpeg" alt="Screenshot 6" width="800" height="auto">
+</div>
+<br>
+<div style="display: flex; justify-content: center;">
+    <img src="images/screenshot-7.jpeg" alt="Screenshot 7 style="margin-right: 50px;" width="800" height="auto">
+    <img src="images/screenshot-8.jpeg" alt="Screenshot 8" width="800" height="auto">
+</div>
+
 
 
 ## <p align="center" > About the Author </p>
