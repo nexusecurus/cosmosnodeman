@@ -30,7 +30,7 @@
       <td><img src="https://img.shields.io/badge/ARM-Architecture-blue"></td>
       <td><img src="https://img.shields.io/badge/Linux-Used-yellow?logo=linux"></td>
       <td><img src="https://img.shields.io/badge/Markdown-Used-yellow?logo=markdown"></td>
-      <td><img src="https://img.shields.io/badge/COSMOS-Ecosystem-blue"></td>
+      <td><img src="https://img.shields.io/badge/COSMOS-Ecosystem-purple"></td>
       <td><img src="https://img.shields.io/badge/Terminal-TUI-blue"></td>
     </tr>
   </table>
@@ -80,7 +80,7 @@ The program was tested even in a Ubuntu Server Minimized setup, to ensure that i
     - Create, Remove, Change Active Wallet, Send Funds, Receive Funds...
 
 **Monitoring**
-    - Several options to help the user assessing the Node Health Status.
+    - Several options to help the user monitoring the Node Health Status.
 
 **Validator Options**
     - Features like, Claim Commission Rewards and more to be included.
@@ -233,8 +233,6 @@ If you have already an installed NODE on your system, first of all you need to a
     - MONIKER - # Add your MONIKER NODE name.
     - PORT_PREFIX - # (Default: 266) If you are using custom ports change this.
     - DAEMON_HOME - # (Default: $HOME) If you installed your previous node in a different directory, change this.
-    - CHAIN_DIR - # (Default: ."chain"d) If you renamed it, please change this.
-
 
 Then you can run the program with the above command.
 
@@ -277,7 +275,9 @@ There are some random exits from the program from time to time. Outside that, it
 
 ---
 <br>
+
 ## <p align="center" > About the Author </p>
+
 <br>
 
 - Organization: NexuSecurus
