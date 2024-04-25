@@ -259,19 +259,19 @@ There are some random exits from the program from time to time. Outside that, it
 ## Screenshots
 
 <div style="display: flex; justify-content: center;">
-    <img src="images/screenshot-1.jpeg" alt="Screenshot 1 style="margin-right: 50px;" width="250" height="auto">
-    <img src="images/screenshot-2.jpeg" alt="Screenshot 2" width="250" height="auto">
-    <img src="images/screenshot-3.jpeg" alt="Screenshot 3" width="250" height="auto">
-    <img src="images/screenshot-4.jpeg" alt="Screenshot 4" width="250" height="auto">
+    <img src="images/screenshot-1.jpeg" alt="Screenshot 1 style="margin-right: 50px;" width="200" height="auto">
+    <img src="images/screenshot-2.jpeg" alt="Screenshot 2" width="200" height="auto">
+    <img src="images/screenshot-3.jpeg" alt="Screenshot 3" width="200" height="auto">
+    <img src="images/screenshot-4.jpeg" alt="Screenshot 4" width="200" height="auto">
 </div>
 <br>
 </div>
 <br>
 <div style="display: flex; justify-content: center;">
-    <img src="images/screenshot-5.jpeg" alt="Screenshot 5 style="margin-right: 50px;" width="250" height="auto">
-    <img src="images/screenshot-6.jpeg" alt="Screenshot 6" width="250" height="auto">
-    <img src="images/screenshot-7.jpeg" alt="Screenshot 7" width="250" height="auto">
-    <img src="images/screenshot-8.jpeg" alt="Screenshot 8" width="250" height="auto">
+    <img src="images/screenshot-5.jpeg" alt="Screenshot 5 style="margin-right: 50px;" width="200" height="auto">
+    <img src="images/screenshot-6.jpeg" alt="Screenshot 6" width="200" height="auto">
+    <img src="images/screenshot-7.jpeg" alt="Screenshot 7" width="200" height="auto">
+    <img src="images/screenshot-8.jpeg" alt="Screenshot 8" width="200" height="auto">
 </div>
 <br>
 
