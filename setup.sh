@@ -1338,8 +1338,12 @@ Moving genesis to $DAEMON_HOME/$CHAIN_DIR/config
 set_sentry() {
 # SET FILE CHECK
 
-    sed -i   -e 's|^pruning *=.*|pruning = "custom"|'   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|'   -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|pruning-interval = "19"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+    sed -i -e 's|^pruning *=.*|pruning = "custom"|'   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|'   -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|pruning-interval = "10"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
 
+    sed -i -e '|^snapshot-interval *=.*|snapshot-interval = 0|' $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+
+    sed -i -e 's|îndexers *=.*|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
+    
     sed -i -e "s|^seed_mode *=.*|seed_mode = \"false\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
     sed -i -e "s|^pex *=.*|pex = \"true\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
@@ -1409,7 +1413,11 @@ Applying changes to $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 set_validator() {
 # SET FILE CHECK
 
-    sed -i   -e 's|^pruning *=.*|pruning = "default"|'   -e 's|^pruning-keep-recent *=.*|#pruning-keep-recent = "0"|'   -e 's|^pruning-keep-every *=.*|#pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|#pruning-interval = "0"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+    sed -i -e 's|^pruning *=.*|pruning = "custom"|'   -e 's|^pruning-keep-recent *=.*|#pruning-keep-recent = "100"|'   -e 's|^pruning-keep-every *=.*|#pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|#pruning-interval = "10"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+
+    sed -i -e '|^snapshot-interval *=.*|snapshot-interval = 0|' $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+
+    sed -i -e 's|îndexers *=.*|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
     sed -i -e "s|^seed_mode *=.*|seed_mode = \"false\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
@@ -1777,7 +1785,6 @@ Please enter your >( $USER )< system password to unlock your >( $WALLET_NAME )< 
 
 
 "
-#  $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $amount_to_send$DENOM --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM
     $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $uamount_to_send$DENOM --from $WALLET_NAME --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM
     
     if [ $? -ne 0 ]; then
