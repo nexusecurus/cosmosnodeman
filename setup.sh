@@ -1101,7 +1101,16 @@ git_clone_chain() {
 "
     sleep 1
 
-    make install
+    if [ $CHAIN_NAME == 'kyve' ]; then
+
+        make install ENV=mainnet
+
+    else
+
+        make install
+
+    fi
+
 
     sleep 2
 }
@@ -1574,7 +1583,7 @@ SAVE YOUR SEED PHRASE, before pressing any key to continue...
             new_wallet_name=$(dialog \
             --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
             --title "Wallet Setup Menu" \
-            --inputbox "Insert the for your imported wallet:" 10 50 3>&1 1>&2 2>&3 3>&-)
+            --inputbox "Insert the name of your imported wallet:" 10 50 3>&1 1>&2 2>&3 3>&-)
 
             if [ $? -ne 0 ]; then
                 clear
@@ -1595,7 +1604,13 @@ The Keyring Backend used will be 'os', so you should enter your $USER password a
             
             sleep 2
 
-            if $DAEMON_NAME keys add $WALLET_NAME --recover --keyring-backend os; then
+            if result=$($DAEMON_NAME keys add $WALLET_NAME --recover --keyring-backend os); then
+
+                wallet_address=$(echo "$result" | grep -oP '(?<=address: )[^ ]+')
+
+                sed -i "s/CURRENT_WALLET_ADDR=.*/CURRENT_WALLET_ADDR=\"$wallet_address\"/" "$current_dir/chains/$pick.txt"
+
+                source "$current_dir/chains/$pick.txt"
 
                 colored_text "32" "
 
