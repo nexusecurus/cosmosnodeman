@@ -556,19 +556,19 @@ go_install() {
     sleep 2
     clear
 
-    colored_text "36;1" "Downloading GO v1.22.0...
+    colored_text "36;1" "Downloading GO v1.20...
 "    
-    wget https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
+    wget https://go.dev/dl/go1.20.linux-amd64.tar.gz
 
     sleep 2
     clear
     
-    colored_text "36;1" "Installing GO v1.22.0...
+    colored_text "36;1" "Installing GO v1.20...
 
 
 "
-    sudo tar -C /usr/local -xvzf "go1.22.0.linux-amd64.tar.gz"
-    rm go1.22.0.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xvzf "go1.20.linux-amd64.tar.gz"
+    rm go1.20.linux-amd64.tar.gz
 
     # Set environment variables in .profile
     clear
@@ -1342,7 +1342,7 @@ set_sentry() {
 
     sed -i -e 's|^snapshot-interval *=.*|snapshot-interval = 0|' $DAEMON_HOME/$CHAIN_DIR/config/app.toml
 
-    sed -i -e 's|îndexer *=.*|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
+    sed -i -e 's|^\s*indexer\s*=\s*".*"|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
     
     sed -i -e "s|^seed_mode *=.*|seed_mode = \"false\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
@@ -1417,7 +1417,7 @@ set_validator() {
 
     sed -i -e 's|^snapshot-interval *=.*|snapshot-interval = 0|' $DAEMON_HOME/$CHAIN_DIR/config/app.toml
 
-    sed -i -e 's|îndexer *=.*|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
+    sed -i -e 's|^\s*indexer\s*=\s*".*"|indexer = "null"|' $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
     sed -i -e "s|^seed_mode *=.*|seed_mode = \"false\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
