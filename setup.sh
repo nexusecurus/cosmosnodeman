@@ -1413,7 +1413,7 @@ Applying changes to $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 set_validator() {
 # SET FILE CHECK
 
-    sed -i -e 's|^pruning *=.*|pruning = "custom"|'   -e 's|^pruning-keep-recent *=.*|#pruning-keep-recent = "100"|'   -e 's|^pruning-keep-every *=.*|#pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|#pruning-interval = "10"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
+    sed -i -e 's|^pruning *=.*|pruning = "custom"|'   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|'   -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|'   -e 's|^pruning-interval *=.*|pruning-interval = "10"|'   $DAEMON_HOME/$CHAIN_DIR/config/app.toml
 
     sed -i -e 's|^snapshot-interval *=.*|snapshot-interval = 0|' $DAEMON_HOME/$CHAIN_DIR/config/app.toml
 
