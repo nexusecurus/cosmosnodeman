@@ -1809,8 +1809,6 @@ Press any key to continue...
 
 change_wallet() {
 
-    check_wallets
-
     current_menu="under_wallet"
 
     wallet_files_dir="$DAEMON_HOME/$CHAIN_DIR"
