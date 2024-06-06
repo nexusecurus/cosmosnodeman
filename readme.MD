@@ -83,7 +83,7 @@ The program was tested even in a Ubuntu Server Minimized setup, to ensure that i
     - Several options to help the user monitoring the Node Health Status.
 
 **Validator Options**
-    - Features like, Claim Commission Rewards and more to be included.
+    - Features like, View Validator Info, Claim commissions, Unjail Validators, and more to come.
 
 <br>
 
