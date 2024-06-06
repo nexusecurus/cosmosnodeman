@@ -1704,7 +1704,7 @@ Please enter your >( $USER )< system password to unlock your >( $WALLET_NAME )< 
 
 
 "
-    $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $uamount_to_send$DENOM --from $WALLET_NAME --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM
+    $DAEMON_NAME tx bank send $WALLET_NAME $recipient_address $uamount_to_send$DENOM --from $WALLET_NAME --chain-id $CHAIN_ID --gas auto --gas-adjustment 1.5 --gas-prices $MIN_GAS_PRICE$DENOM --yes
     
     if [ $? -ne 0 ]; then
         colored_text "31;1" "
@@ -2105,7 +2105,7 @@ Press any key to continue...
 Enter your $WALLET_NAME wallet password to proceed with the claiming signing. Its normal to ask for it more than once.
 
 "
-            $DAEMON_NAME tx distribution withdraw-rewards $($DAEMON_NAME keys show $WALLET_NAME --bech val -a) --commission --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.5 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM
+            $DAEMON_NAME tx distribution withdraw-rewards $($DAEMON_NAME keys show $WALLET_NAME --bech val -a) --commission --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.5 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM --yes
 
             if [ $? -ne 0 ]; then
 
@@ -2128,7 +2128,7 @@ Press any key to continue...
             colored_text "32" "
 
 
-Rewards were successfully claimed from the $MONIKER Validator.
+The commission rewards have been successfully claimed from the $MONIKER Validator.
 
 "
 
@@ -2210,7 +2210,7 @@ Press any key to continue...
 Enter your $WALLET_NAME wallet password to proceed with the unjailing process and submit the transaction:
 
 "
-                    $DAEMON_NAME tx slashing unjail --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.6 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM
+                    $DAEMON_NAME tx slashing unjail --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.6 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM --yes
 
                     if [ $? -ne 0 ]; then
                         colored_text "31" "
