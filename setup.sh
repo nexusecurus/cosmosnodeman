@@ -227,18 +227,12 @@ prune_node() {
 "
 
     sudo systemctl stop $CHAIN_NAME.service
-    
-
-    sleep 4
-
 
     colored_text "36;1" "
     
 Backing up (priv_validator_state.json) to $DAEMON_HOME/$CHAIN_DIR/
 
 "
-
-    sleep 1
 
     cp -v $DAEMON_HOME/$CHAIN_DIR/data/priv_validator_state.json $DAEMON_HOME/$CHAIN_DIR/priv_validator_state.json
 
@@ -262,27 +256,20 @@ Press any key to continue...
     colored_text "36;1" "Removing $pick Blockchain database files...
 
 "
-
-    sleep 1
     
     rm -rfv $DAEMON_HOME/$CHAIN_DIR/data/
     
-
     colored_text "32;1" "
 
 All Blockchain files have been removed...
 "
-    sleep 2
-
     colored_text "36;1" "
 Downloading latest $pick snapshot from NexuSecurus Servers...
 
 "
-    sleep 1
 
     wget -O $snap_file $SNAP_URL --inet4-only
     
-    sleep 2
     
     colored_text "36;1" "
 
@@ -290,7 +277,6 @@ Downloading latest $pick snapshot from NexuSecurus Servers...
 Extracting snapshot to $DAEMON_HOME/$CHAIN_DIR
 
 "
-    sleep 1
     
     if [[ $snap_file == *.tar.gz ]]; then
 
@@ -316,7 +302,6 @@ Press any key to exit...
         main_menu
     fi
     
-    sleep 2
     
     colored_text "36;1" "
 
@@ -324,11 +309,9 @@ Press any key to exit...
 Removing $snap_file snapshot...
 
 "
-    sleep 1
 
     rm -rfv $snap_file
 
-    sleep 2
 
     colored_text "36;1" "
 
@@ -336,18 +319,15 @@ Removing $snap_file snapshot...
 Replacing (priv_validator_state.json) with backup...
 "
 
-    sleep 1
     
     mv -v $DAEMON_HOME/$CHAIN_DIR/priv_validator_state.json $DAEMON_HOME/$CHAIN_DIR/data/priv_validator_state.json
 
-    sleep 2
 
     colored_text "36;1" "
 
 Restarting $CHAIN_NAME service...
 "
 
-    sleep 1
     
     sudo systemctl start $CHAIN_NAME.service
 
@@ -355,9 +335,7 @@ Restarting $CHAIN_NAME service...
     --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
     --title "INFO" \
     --msgbox "\n$pick Node has been successfully pruned..." 6 50
-    
-    sleep 2
-    
+        
     monitor_menu
 
     
@@ -436,33 +414,17 @@ dependencies_install() {
         sudo apt dist-upgrade -y
         sudo apt install -y \
             dialog \
-            bash-completion \
-            qemu-guest-agent \
-            nano \
-            tree \
             ntpdate \
-            plocate \
-            nmon \
             curl \
-            rsync \
-            screen \
             wget \
-            unzip \
             git \
             make \
             cmake \
-            nload \
-            duf \
             jq \
-            fio \
-            zip \
-            lm-sensors \
             build-essential \
             gcc \
-            chrony \
             snapd \
             lz4 \
-            telnet \
             ufw \
             xclip \
             bc \
@@ -507,7 +469,6 @@ go_verify() {
         --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
         --title "INFO" \
         --msgbox "\nThis is the first time you are running this program.\n\nSome dependencies need to be installed.\n\n\nPLEASE BE PATIENT..." 11 70
-        sleep 5
         
         clear
 
@@ -549,18 +510,15 @@ go_install() {
     clear
     colored_text "36;1" "The program will now check additional required dependencies...
 "
-    sleep 1
 
     sudo rm -rfv /usr/local/go
 
-    sleep 2
     clear
 
     colored_text "36;1" "Downloading GO v1.20...
 "    
     wget https://go.dev/dl/go1.20.linux-amd64.tar.gz
 
-    sleep 2
     clear
     
     colored_text "36;1" "Installing GO v1.20...
@@ -839,8 +797,6 @@ Please wait...
 Loading Node Log...
 
 "
-            sleep 2
-
             sudo journalctl -u $CHAIN_NAME.service -f --no-hostname -o cat
             monitor_info
             ;;
@@ -853,9 +809,7 @@ Loading Node Log...
 Press CTRL+C to exit the daemon monitor...
 
 
-"
-            sleep 3
-    
+"    
             colored_text "32" "
 Please wait...
 
@@ -1009,21 +963,16 @@ remove_chain() {
 
 "   
 
-    sleep 2
 
     sudo systemctl stop $CHAIN_NAME.service
     sudo systemctl disable $CHAIN_NAME.service
     sudo systemctl daemon-reload
 
-    sleep 3
     clear
 
     colored_text "36;1" "Backing up $CHAIN_NAME important files to $DAEMON_HOME/$CHAIN_NAME-backups
 
 "
-
-    sleep 2
-
     mkdir -p $DAEMON_HOME/$CHAIN_NAME-backups
     cp -v $DAEMON_HOME/$CHAIN_DIR/config/node_key.json $DAEMON_HOME/$CHAIN_NAME-backups/node_key.json.bak
     cp -v $DAEMON_HOME/$CHAIN_DIR/config/priv_validator_key.json $DAEMON_HOME/$CHAIN_NAME-backups/priv_validator_key.json.bak
@@ -1031,7 +980,6 @@ remove_chain() {
     cp -v $DAEMON_HOME/$CHAIN_DIR/config/config.toml $DAEMON_HOME/$CHAIN_NAME-backups/config.toml.bak
     cp -v $DAEMON_HOME/$CHAIN_DIR/config/app.toml $DAEMON_HOME/$CHAIN_NAME-backups/app.toml.bak
 
-    sleep 2
 
     colored_text "32" "
 
@@ -1053,7 +1001,6 @@ Press any key to continue...
 
 "
 
-    sleep 2
     
     rm -rfv "$DAEMON_HOME/.cache"
     rm -rfv "$DAEMON_HOME/$CHAIN_DIR"
@@ -1069,14 +1016,12 @@ Press any key to continue...
 All files have been removed...
 
 "
-    sleep 2
 
     dialog \
     --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
     --title "INFO" \
     --msgbox "\n$pick Node has been removed successfully..." 7 50
     
-    sleep 2
     
     go_verify
 }
@@ -1092,14 +1037,12 @@ git_clone_chain() {
     cd $CHAIN_NAME
     git checkout $BIN_VER
 
-    sleep 2
     clear
     
     colored_text "36;1" "Building $pick binaries...
 
 
 "
-    sleep 1
 
     if [ $CHAIN_NAME == 'kyve' ]; then
 
@@ -1112,7 +1055,6 @@ git_clone_chain() {
     fi
 
 
-    sleep 2
 }
 
 cosmovisor_install() {
@@ -1121,18 +1063,15 @@ cosmovisor_install() {
     colored_text "36;1" "CosmoVisor Service will be installed...
 
 "
-    sleep 1
 
     colored_text "36;1" "
 Creating required directories...
 
 "
 
-    sleep 2
 
     mkdir -p -v $DAEMON_HOME/$CHAIN_DIR/cosmovisor/genesis/bin
 
-    sleep 2
     
     colored_text "36;1" "
 
@@ -1140,11 +1079,9 @@ Copying $pick binaries to $DAEMON_HOME/$CHAIN_DIR/cosmovisor/genesis/bin...
 
 
 "
-    sleep 2
 
     cp -v $HOME/go/bin/$DAEMON_NAME $DAEMON_HOME/$CHAIN_DIR/cosmovisor/genesis/bin
     
-    sleep 2
     
     colored_text "36;1" "
 
@@ -1153,14 +1090,12 @@ Downloading and setting up CosmoVisor Service...
 
 
 "
-    sleep 2
 
     colored_text "32" "Please wait...
 
 "
     go install $COSMOVISOR_URL
     
-    sleep 2
 }
 
 create_service_file() {
@@ -1202,7 +1137,6 @@ EOF
     sudo systemctl daemon-reload
     sudo systemctl enable $CHAIN_NAME.service
     
-    sleep 2
 }
 
 chain_setup() {
@@ -1219,7 +1153,6 @@ chain_setup() {
     
     $DAEMON_NAME init $MONIKER --chain-id $CHAIN_ID --home $DAEMON_HOME/$CHAIN_DIR
 
-    sleep 3
     clear
 
     sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"$MIN_GAS_PRICE$DENOM\"|" $DAEMON_HOME/$CHAIN_DIR/config/app.toml
@@ -1242,18 +1175,15 @@ chain_files_get() {
     colored_text "36;1" "Downloading latest $pick snapshot from $snap_domain Servers...
 
 "
-    sleep 2
 
     wget -O $snap_file $SNAP_URL --inet4-only
     
-    sleep 1
     
     colored_text "36;1" "
 
 Extracting snapshot to $DAEMON_HOME/$CHAIN_DIR
 
 "
-    sleep 2
 
     if [[ $snap_file == *.tar.gz ]]; then
 
@@ -1279,14 +1209,12 @@ Press any key to exit...
         main_menu
     fi
     
-    sleep 1
     clear
 
     if [ -f "$DAEMON_HOME/$CHAIN_DIR/data/upgrade-info.json" ]; then
         cp -v $DAEMON_HOME/$CHAIN_DIR/data/upgrade-info.json $DAEMON_HOME/$CHAIN_DIR/cosmovisor/genesis/upgrade-info.json
     fi
     
-    sleep 2
     
     colored_text "36;1" "
 
@@ -1295,39 +1223,32 @@ Removing $snap_file
 "
     rm -rfv $snap_file
 
-    sleep 2
     clear
     
     colored_text "36;1" "Downloading $pick addrbook from $addr_domain Servers...
 
 "
 
-    sleep 2
     
     wget -O addrbook.json $ADDR_URL --inet4-only
     
-    sleep 1
     
     colored_text "36;1" "
 
 Placing addrbook in $DAEMON_HOME/$CHAIN_DIR/config
 
 "
-    sleep 2
     
     mv -v addrbook.json $DAEMON_HOME/$CHAIN_DIR/config
     
-    sleep 2
     clear
     
     colored_text "36;1" "Downloading $pick genesis from $gen_domain Servers...
 
 "
-    sleep 2
     
     wget -O genesis.json $GENESIS_URL --inet4-only
     
-    sleep 1
     
     colored_text "36;1" "
 
@@ -1335,11 +1256,9 @@ Moving genesis to $DAEMON_HOME/$CHAIN_DIR/config
 
 "
 
-    sleep 2
     
     mv -v genesis.json $DAEMON_HOME/$CHAIN_DIR/config
     
-    sleep 2
 
     clear
 }
@@ -1406,7 +1325,6 @@ Node1ID,Node2ID
 " 
     read -r unconditional_peers
     
-    sleep 1
 
     sed -i -e "s|^unconditional_peer_ids *=.*|unconditional_peer_ids = \"$unconditional_peers\"|" $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
@@ -1416,7 +1334,6 @@ Node1ID,Node2ID
 Applying changes to $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
 "
-    sleep 3
 }
 
 set_validator() {
@@ -1481,7 +1398,7 @@ Node1ID,Node2ID
 Changes successfully applied to $DAEMON_HOME/$CHAIN_DIR/config/config.toml
 
 "
-    sleep 2
+    sleep 1
 
     set_wallet
 }
@@ -1525,7 +1442,6 @@ set_wallet() {
             source "$current_dir/chains/$pick.txt"
 
 
-            sleep 1
             clear
             
 
@@ -1535,7 +1451,6 @@ Lets create a new wallet to use with your $pick Node:
 The Keyring Backend used will be 'os', so you should enter your $USER password as passphrase to unlock your wallet:
 
 "
-            sleep 1
     
             if result=$($DAEMON_NAME keys add $WALLET_NAME --keyring-backend os) ; then
 
@@ -1561,19 +1476,16 @@ SAVE YOUR SEED PHRASE, before pressing any key to continue...
 
 "           
                 read -p ""
-
-                sleep 1
     
                 wallet_menu
             else
     
                 clear
     
-                colored_text "31;1" "UPS!!! Something went wrong. Please retry again...
+                colored_text "31;1" "Something went wrong. Please retry again...
 "
     
-                sleep 3
-    
+                sleep 3    
                 wallet_menu
             fi ;;
         2)
@@ -1602,8 +1514,6 @@ The Keyring Backend used will be 'os', so you should enter your $USER password a
 
 "
             
-            sleep 2
-
             if result=$($DAEMON_NAME keys add $WALLET_NAME --recover --keyring-backend os); then
 
                 wallet_address=$(echo "$result" | grep -oP '(?<=address: )[^ ]+')
@@ -1626,13 +1536,11 @@ Press any key to continue...
 " 
             read -p ""
 
-            sleep 1
-
             wallet_menu
             else
                 clear
     
-                colored_text "31;1" "UPS!!!, Something went wrong, please try again...
+                colored_text "31;1" "Something went wrong, please try again...
 "
     
                 sleep 3
@@ -1655,7 +1563,7 @@ wallet_info() {
 
     colored_text "36;1" "Wallet General Info:
         
-        "
+"
     
     if ! $DAEMON_NAME keys show $WALLET_NAME; then
         clear
@@ -1668,9 +1576,7 @@ Press any key to continue...
 
 "
         read -p ""
-    
-        sleep 1
-    
+        
         wallet_menu
     else        
         colored_text "32;1" "
@@ -1679,8 +1585,6 @@ Press any key to continue...
 
 " 
         read -p ""
-
-        sleep 2
     
         wallet_menu
     fi
@@ -1739,7 +1643,7 @@ The address you entered is not valid. Please enter it again...
         colored_text "31;1" "
 
 
-UPS!!! Something went wrong... Please retry again...
+Something went wrong... Please retry again...
 
 "
     
@@ -1776,7 +1680,7 @@ Enter a valid amount... Please retry again...
         colored_text "31;1" "
         
 
-UPS!!! Something went wrong... Check the error message above, for more details.
+Something went wrong... Check the error message above, for more details.
 
 "
     
@@ -1806,7 +1710,7 @@ Please enter your >( $USER )< system password to unlock your >( $WALLET_NAME )< 
         colored_text "31;1" "
 
 
-UPS!!! Something went wrong... You can check the error message above, for more details.
+Something went wrong... You can check the error message above, for more details.
 
 "
         colored_text "32;1" "
@@ -1847,6 +1751,22 @@ receive_funds() {
 "
     
     current_address=$($DAEMON_NAME keys show $WALLET_NAME -a)
+
+    if [ -z "$current_address" ]; then
+        colored_text "31;1" "
+
+The wallet named "$WALLET_NAME" was not found, or the password is incorrect.
+
+"
+        colored_text "32;1" "
+
+Press any key to continue...
+
+"
+        read -p ""
+
+        wallet_menu
+    fi
 
     qrencode -t UTF8 -s 10 -m 2 -o .addrfile.txt $current_address
 
@@ -1918,14 +1838,20 @@ The Keyring Backend used will be 'os', so you should enter your $USER password a
 
     wallet_address=$($DAEMON_NAME keys show $choice -a)
 
-    if [ $? -ne 0 ]; then
+    if [ -z "$wallet_address" ]; then
         colored_text "31" "
 
 
 The wallet named "$choice" was not found, or the password is incorrect.
 
 "
-        sleep 3
+
+        colored_text "32;1" "
+
+Press any key to continue...
+
+"
+        read -p ""
 
         wallet_menu
     fi
@@ -2082,12 +2008,17 @@ validator_menu() {
 
     check_service_no_running
 
+    check_wallets
+
     choice=$(dialog \
     --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
     --title "Validator Menu" \
     --cancel-label "Back" \
     --menu "Select an option:" 20 60 11 \
-    "1" "Claim Rewards from Validator" \
+    "1" "Check Validator Info" \
+    "2" "Claim Validator Commission" \
+    "3" "Check Jailing Status" \
+    "4" "Unjail Validator" \
     "0" "Return to Main Menu" \
     3>&1 1>&2 2>&3)
 
@@ -2102,10 +2033,56 @@ validator_menu() {
             main_menu
             ;;
         1)
+
+            current_menu="validator_options"
+
+            clear
+
+            colored_text "36" "Your $WALLET_NAME wallet needs to be unlocked to see your validator info.:
+
+"
+            VALOPER=$($DAEMON_NAME keys show $WALLET_NAME --bech val --output json | jq -r .address)
+
+            if [ -z "$VALOPER" ]; then
+                colored_text "31" "
+
+Failed to unlock your $WALLET_NAME wallet. Check the error above for more details...
+
+"
+                colored_text "32;1" "
+
+Press any key to continue...
+
+"
+                read -p ""
+
+                validator_menu
+
+            fi
+
+            clear
+
+            colored_text "36" "
+Below is all the information about your Validator:
+
+"
+            $DAEMON_NAME query staking validator $VALOPER --output json | jq
+
+            colored_text "32;1" "
+
+Press any key to continue...
+
+"
+            read -p ""
+
+            validator_menu
+
+            ;;
+            
+        2)
             current_menu="validator_options"
             clear
 
-            check_wallets
 
             dialog \
             --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
@@ -2123,60 +2100,92 @@ validator_menu() {
             colored_text "36;1" "Claiming Rewards Process from the $MONIKER Validator...
 
 "
+
             colored_text "33" "
-
-Enter your $WALLET_NAME password to use it to claim rewards from the $MONIKER Validator. As usual its your $USER password.
-
-"
-
-            if result=$($DAEMON_NAME keys show $WALLET_NAME --bech=val) ; then
-
-                valoper_address=$(echo "$result" | grep -oP '(?<=address: )[^ ]+')
-
-                colored_text "33" "
-
-
-Enter your $WALLET_NAME password to proceed with the claiming signing. As usual its your $USER password.
+Enter your $WALLET_NAME wallet password to proceed with the claiming signing. Its normal to ask for it more than once.
 
 "
-                if ! ($DAEMON_NAME tx distribution withdraw-rewards $valoper_address --from $WALLET_NAME --chain-id $CHAIN_ID --yes) ; then
+            $DAEMON_NAME tx distribution withdraw-rewards $($DAEMON_NAME keys show $WALLET_NAME --bech val -a) --commission --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.5 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM
 
-                    colored_text "31" "
+            if [ $? -ne 0 ]; then
 
+                colored_text "31" "
 
 Failed to claim rewards from the $MONIKER Validator. Check the error above for more details...
 
 "
-                    colored_text "32;1" "
+                colored_text "32;1" "
 
 Press any key to continue...
 
 "
-                    read -p ""
+                read -p ""
 
-                    validator_menu
+                validator_menu
 
-                else
-                colored_text "32" "
+            fi
+                
+            colored_text "32" "
 
 
 Rewards were successfully claimed from the $MONIKER Validator.
 
 "
 
-                colored_text "32;1" "
+            colored_text "32;1" "
 Press any key to continue...
 
 "
-                read -p ""
+            read -p ""
 
-                fi
+            validator_menu
+            ;;
+        3)
+            current_menu="validator_options"
+            clear
 
-            else
+            colored_text "36" "
+Below is all the information about your Validator Jailing Status:
+
+"
+            $DAEMON_NAME query slashing signing-info $($DAEMON_NAME tendermint show-validator)
+
+            colored_text "32;1" "
+
+Press any key to continue...
+
+"
+            read -p ""
+
+            validator_menu
+            ;;
+        4)
+            current_menu="validator_options"
+            dialog \
+            --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
+            --title "UNJAIL VALIDATOR" \
+            --defaultno \
+            --yesno "\nThis process will check if your validator is JAILED and if the JAIL period has expired. If both conditions are met, the unjail process will be executed.\n\nDo you want to proceed?" 11 70
+            
+            if [ $? -ne 0 ]; then
+                clear
+                validator_menu
+            fi
+
+            clear
+
+            CURRENT_DATE=$(date '+%Y-%m-%dT%H:%M:%SZ')
+            colored_text "36" "
+
+Enter your $WALLET_NAME wallet password to verify if your node is jailed:
+
+"
+            JAIL_STATUS=$($DAEMON_NAME keys show $WALLET_NAME --bech val --output json | jq -r .jailed)
+
+            if [ -z "$JAIL_STATUS" ]; then
                 colored_text "31" "
 
-
-Failed to claim rewards from the $MONIKER Validator. Check the error above for more details...
+Failed to unlock your $WALLET_NAME wallet. Check the error above for more details...
 
 "
                 colored_text "32;1" "
@@ -2185,11 +2194,62 @@ Press any key to continue...
 
 "
                 read -p ""
+
+                validator_menu
+
+            fi
+
+            if [ "$JAIL_STATUS" = "true" ]; then
+                JAILED_UNTIL=$($DAEMON_NAME query slashing signing-info -o json $($DAEMON_NAME tendermint show-validator) | jq -r .jailed_until)
             
-            fi            
+                JAILED_UNTIL_SEC=$(date -d "$JAILED_UNTIL" '+%s')
+                CURRENT_DATE_SEC=$(date -d "$CURRENT_DATE" '+%s')
+
+                if [ "$CURRENT_DATE_SEC" -gt "$JAILED_UNTIL_SEC" ]; then
+                    colored_text "32" "
+Enter your $WALLET_NAME wallet password to proceed with the unjailing process and submit the transaction:
+
+"
+                    $DAEMON_NAME tx slashing unjail --from $WALLET_NAME --chain-id $CHAIN_ID --gas-adjustment 1.6 --gas auto --gas-prices $MIN_GAS_PRICE$DENOM
+
+                    if [ $? -ne 0 ]; then
+                        colored_text "31" "
+
+Failed to unjail your $WALLET_NAME wallet. Check the error above for more details...
+
+"
+                        colored_text "32;1" "
+
+Press any key to continue...
+
+"
+                        read -p ""
+
+                        validator_menu
+
+                    fi
+
+                    dialog \
+                    --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
+                    --title "INFO" \
+                    --msgbox "\nYour $pick Validator Node has been unjailed.\nPress any key to continue..." 9 50
+
+                    validator_menu
                 
-            validator_menu 
+                fi
+
+            fi
+
+            clear
+
+            dialog \
+            --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
+            --title "INFO" \
+            --msgbox "\nYour $pick Validator Node is not currently Jailed, or Jail period isn't over yet.\n\nPress any key to continue..." 10 70
+
+            validator_menu
             ;;
+
     esac
 }
 
