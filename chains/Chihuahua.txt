@@ -1,32 +1,45 @@
-
-
 # Set the Moniker for a customized name choosen by you.
+
 # MUST EDIT TO YOUR OWN NAME
+
 MONIKER="defaultmoniker"
 
+
 # The default PORT_PREFIX for all Cosmos Chains is 266, EX: 26656 if you want to install more than one chain in one server, you must customize this value.
+
 PORT_PREFIX="266"
 
+
 # ONLY CHANGE IF YOU WANT INSTALL CHAIN TO OTHER PLACE OTHER THAN $HOME OR YOU ALREADY HAVE AN INSTALLED ONE IN OTHER PLACE RATHER THAN $HOME
+
 DAEMON_HOME="$HOME"
 
 
+
 # ONLY CHANGE THIS IF YOU HAVE SURE 
+
 GIT_URL="https://github.com/ChihuahuaChain/chihuahua.git"
-GENESIS_URL="https://raw.githubusercontent.com/ChihuahuaChain/chihuahua/main/mainnet/genesis.json"
-ADDR_URL="https://snapshots.polkachu.com/addrbook/chihuahua/addrbook.json"
+GENESIS_URL="https://snapshots.nexusecurus.com/blockchains/chihuahua/genesis/genesis.json"
+ADDR_URL="https://snapshots.nexusecurus.com/blockchains/chihuahua/addrbook/addrbook.json"
 COSMOVISOR_URL="cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest"
-SNAP_URL="https://snapshots.polkachu.com/snapshots/chihuahua/chihuahua_12578047.tar.lz4"
+SNAP_URL="https://snapshots.nexusecurus.com/blockchains/chihuahua/snapshot/chihuahua-snap-latest.tar.lz4"
 
 
-# DO NOT CHANGE THIS
+
+# ONLY CHANGE FOR CHAIN UPGRADES
+
+BIN_VER="v7"
+MIN_GAS_PRICE="100"
+
+
+
+# DO NOT CHANGE THIS AT ALL
+
 CHAIN_DIR=".chihuahuad"
 CURRENT_WALLET_ADDR=""
 WALLET_NAME=""
 CHAIN_ID="chihuahua-1"
 CHAIN_NAME="chihuahua"
 DAEMON_NAME="chihuahuad"
-BIN_VER="v6.0.1"
-MIN_GAS_PRICE="100"
 DENOM="uhuahua"
 TICKER="HUAHUA"

@@ -1,31 +1,45 @@
 # Set the Moniker for a customized name choosen by you.
+
 # MUST EDIT TO YOUR OWN NAME
+
 MONIKER="defaultmoniker"
 
+
 # The default PORT_PREFIX for all Cosmos Chains is 266, EX: 26656 if you want to install more than one chain in one server, you must customize this value.
+
 PORT_PREFIX="266"
 
+
 # ONLY CHANGE IF YOU WANT INSTALL CHAIN TO OTHER PLACE OTHER THAN $HOME OR YOU ALREADY HAVE AN INSTALLED ONE IN OTHER PLACE RATHER THAN $HOME
+
 DAEMON_HOME="$HOME"
 
 
 
 # ONLY CHANGE THIS IF YOU HAVE SURE
+
 GIT_URL="https://github.com/KYVENetwork/chain.git"
-GENESIS_URL="https://snapshots.polkachu.com/genesis/kyve/genesis.json"
-ADDR_URL="https://snapshots.polkachu.com/addrbook/kyve/addrbook.json"
+GENESIS_URL="https://snapshots.nexusecurus.com/blockchains/kyve/genesis/genesis.json"
+ADDR_URL="https://snapshots.nexusecurus.com/blockchains/kyve/addrbook/addrbook.json"
 COSMOVISOR_URL="cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest"
-SNAP_URL="https://snapshots.polkachu.com/snapshots/kyve/kyve_6030988.tar.lz4"
+SNAP_URL="https://snapshots.nexusecurus.com/blockchains/kyve/snapshot/kyve-snap-latest.tar.lz4"
 
 
-# DO NOT CHANGE THIS
+
+# ONLY CHANGE FOR CHAIN UPGRADES
+
+BIN_VER="v1.4.0"
+MIN_GAS_PRICE="0.025"
+
+
+
+# DO NOT CHANGE THIS AT ALL
+
 CHAIN_DIR=".kyve"
 CURRENT_WALLET_ADDR=""
 WALLET_NAME=""
 CHAIN_ID="kyve-1"
 CHAIN_NAME="kyve"
 DAEMON_NAME="kyved"
-BIN_VER="v1.4.0"
-MIN_GAS_PRICE="0.0001"
 DENOM="ukyve"
 TICKER="KYVE"

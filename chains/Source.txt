@@ -1,33 +1,45 @@
-
-
 # Set the Moniker for a customized name choosen by you.
+
 # MUST EDIT TO YOUR OWN NAME
+
 MONIKER="defaultmoniker"
 
+
 # The default PORT_PREFIX for all Cosmos Chains is 266, EX: 26656 if you want to install more than one chain in one server, you must customize this value.
+
 PORT_PREFIX="266"
 
+
 # ONLY CHANGE IF YOU WANT INSTALL CHAIN TO OTHER PLACE OTHER THAN $HOME OR YOU ALREADY HAVE AN INSTALLED ONE IN OTHER PLACE RATHER THAN $HOME
+
 DAEMON_HOME="$HOME"
 
 
 
 # ONLY CHANGE THIS IF YOU HAVE SURE 
+
 GIT_URL="https://github.com/Source-Protocol-Cosmos/source.git"
-GENESIS_URL="https://nexusecurus.com/blockchain/cosmos/source/genesis/genesis.json"
-ADDR_URL="https://nexusecurus.com/blockchain/cosmos/source/addrbook/addrbook.json"
+GENESIS_URL="https://snapshots.nexusecurus.com/blockchains/source/genesis/genesis.json"
+ADDR_URL="https://snapshots.nexusecurus.com/blockchains/source/addrbook/addrbook.json"
 COSMOVISOR_URL="cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest"
-SNAP_URL="https://nexusecurus.com/blockchain/cosmos/source/snapshot/source.latest.tar.gz"
+SNAP_URL="https://snapshots.nexusecurus.com/blockchains/source/snapshot/source-snap-latest.tar.lz4"
 
 
-# DO NOT CHANGE THIS
+
+# ONLY CHANGE FOR CHAIN UPGRADES
+
+BIN_VER="v3.0.1"
+MIN_GAS_PRICE="0.025"
+
+
+
+# DO NOT CHANGE THIS AT ALL
+
 CHAIN_DIR=".source"
 CURRENT_WALLET_ADDR=""
 WALLET_NAME=""
 CHAIN_ID="source-1"
 CHAIN_NAME="source"
 DAEMON_NAME="sourced"
-BIN_VER="v3.0.1"
-MIN_GAS_PRICE="0.025"
 DENOM="usource"
 TICKER="SOURCE"
