@@ -160,7 +160,16 @@ check_wallets() {
     --title "INFO" \
     --msgbox "\nNo wallets have been created so far.\n\nPlease create a wallet first." 9 40
     wallet_menu
-fi
+    fi
+
+    if [ -z $CURRENT_WALLET_ADDR ] && [ -z $WALLET_NAME ]; then
+    dialog \
+    --clear \
+    --backtitle "NexuSecurus Cosmos Ecosystem Node / Wallet / Monitor Manager - v0.5b" \
+    --title "INFO" \
+    --msgbox "\nYou must choose a wallet first to interact with it.\n\nPlease choose a wallet in the Wallet Menu >> Choose Wallet option" 11 40
+    wallet_menu
+    fi
 
 }
 
