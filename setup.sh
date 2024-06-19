@@ -2,6 +2,14 @@
 
 trap ctrl_c SIGINT
 
+
+clear
+
+if ! command -v dialog &> /dev/null; then
+    echo -e "\ndialog package, a required dependency could not be found.\n\nInstalling..."
+    sudo apt-get update && sudo apt-get install -y dialog
+fi
+
 function ctrl_c() {
 
     case "$current_menu" in
@@ -422,7 +430,6 @@ dependencies_install() {
     if [ $? -eq 0 ]; then
         sudo apt dist-upgrade -y
         sudo apt install -y \
-            dialog \
             ntpdate \
             curl \
             wget \
